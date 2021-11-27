@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "japan",
+  "version": "1.0.0",
+  "description": "A template for kick starting a Cloudflare Workers project",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Yurii Zinets <yurii.zinets@icloud.com>",
+  "license": "MIT",
+  "dependencies": {
+    "webpack": "^5.64.4"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^5.0.3",
+    "exports-loader": "^0.7.0"
+  }
+}
