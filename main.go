@@ -4,8 +4,8 @@ import (
 	"cloudflare.worker/cloudflare"
 )
 
-func HandlerIndex(r *cloudflare.Request) cloudflare.Response {
-	return cloudflare.Response{
+func HandlerIndex(r *cloudflare.Request) *cloudflare.Response {
+	return &cloudflare.Response{
 		Body: []byte(`{"foo":"bar"}`),
 	}
 }
