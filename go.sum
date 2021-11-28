@@ -1,2 +1,4 @@
+github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
+github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/kyoto-framework/kyoto v0.1.1-0.20211124210253-24e5f7545676 h1:Ufy3uqCzcYBYZhap3rjGduHlWtkg4IEWtDzLmu7Fugk=
 github.com/kyoto-framework/kyoto v0.1.1-0.20211124210253-24e5f7545676/go.mod h1:SmGi4PhmKsD5bYJ9FKtFLFqzGeCtRHlCZuvuOnQ3FQg=
