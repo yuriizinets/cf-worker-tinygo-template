@@ -12,18 +12,28 @@ type Request struct {
 }
 
 type Response struct {
-	Body []byte
+	Headers map[string]string
+	Body    []byte
 }
 
-type Entrypoint func(Request) Response
+type Handler func(*Request) Response
 
-var entrypoint Entrypoint
+var handlers = map[string]Handler{}
+
+func HandleFunc(path string, handler Handler) {
+	handlers[path] = handler
+}
 
 func bridge(_ js.Value, input []js.Value) interface{} {
 	// Unpack values
 	_url, _ := url.Parse(input[0].Get("url").String())
-	// Request processing
-	resp := entrypoint(Request{
+	// Get handler
+	handler, ok := handlers[_url.Path]
+	if !ok {
+		panic("Handler not found")
+	}
+	// Call handler
+	resp := handler(&Request{
 		URL:     _url,
 		Headers: map[string]string{},
 		Body:    []byte{},
@@ -38,8 +48,7 @@ func bridge(_ js.Value, input []js.Value) interface{} {
 	return nil
 }
 
-func ListenAndServe(e Entrypoint) {
-	entrypoint = e
+func ListenAndServe() {
 	js.Global().Set("bridge", js.FuncOf(bridge))
 	<-make(chan interface{})
 }

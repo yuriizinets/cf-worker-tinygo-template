@@ -4,12 +4,16 @@ import (
 	"cloudflare.worker/cloudflare"
 )
 
-func entrypoint(r cloudflare.Request) cloudflare.Response {
+func HandlerIndex(r *cloudflare.Request) cloudflare.Response {
 	return cloudflare.Response{
 		Body: []byte(`{"foo":"bar"}`),
 	}
 }
 
 func main() {
-	cloudflare.ListenAndServe(entrypoint)
+	// Routes
+	cloudflare.HandleFunc("/", HandlerIndex)
+
+	// Start
+	cloudflare.ListenAndServe()
 }
